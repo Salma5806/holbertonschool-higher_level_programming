@@ -32,7 +32,7 @@ class Base:
             return []
         return json.loads(json_string)
 
-     @classmethod
+    @classmethod
     def save_to_file(cls, list_objs):
         """Save Dict To Json"""
         d = []
