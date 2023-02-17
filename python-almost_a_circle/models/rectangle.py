@@ -102,20 +102,21 @@ class Rectangle(Base):
          adding the public method def update(self, *args):
          that assigns an argument to each attribute
          """
-         if args:
-            for i, value in enumerate(args):
-                if i == 0:
-                   self.id = value
-                elif i == 1:
-                     self.width = value
-                elif i == 2:
-                     self.height = value
-                elif i == 3:
-                     self.x = value
-                elif i == 4:
-                     self.y = value
-         else:
-              for key, value in kwargs.items():
-                if hasattr(self, key) is True:
-                    setattr(self, key, value)
+         def update(self, *args, **kwargs):
+        """Updates rectangle values
+        """
 
+        if len(kwargs) != 0:
+            for k, v in kwargs.items():
+                setattr(self, k, v)
+        elif len(args) != 0:
+            try:
+                self.id = args[0]
+                self.__width = args[1]
+                self.__height = args[2]
+                self.__x = args[3]
+                self.__y = args[4]
+            except IndexError:
+                pass
+        else:
+            print()
