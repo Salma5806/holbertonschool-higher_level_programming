@@ -52,3 +52,12 @@ class Base:
         a.update(**dictionary)
         return a
 
+    @classmethod
+    def load_from_file(cls):
+        """Load List of Instance from JSON File"""
+        try:
+            with open(cls.__name__ + ".json", "r") as f:
+                return [cls.create(**dictionary) for
+                        dictionary in cls.from_json_string(f.read())]
+        except FileNotFoundError:
+            return []
