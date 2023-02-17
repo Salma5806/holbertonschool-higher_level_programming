@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-"""models Square
-"""
+"""models Square"""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """Inherits from Rectangle
-    """
+    """Inherits from Rectangle"""
 
     def __init__(self, size, x=0, y=0, id=None):
         """Initialize a square"""
@@ -14,23 +12,23 @@ class Square(Rectangle):
 
     @property
     def size(self):
+        """get/set the size of the square"""
         return self.width
 
     @size.setter
     def size(self, value):
-        """size needs to be an int
-        """
+        """size needs to be an int"""
 
         self.width = value
         self.height = value
 
     def __str__(self):
-        """Returns [Square] (<id>) <x>/<y> - <size>
-        """
+        """Returns [Square] (<id>) <x>/<y> - <size>"""
 
         return "[{}] ({}) {}/{} - {}".format(self.__class__.__name__,self.id, self.x, self.y,self.width)
 
     def update(self, *args, **kwargs):
+        """update the square"""
         if len(kwargs) != 0:
             for k, v in kwargs.items():
                 setattr(self, k, v)
@@ -46,7 +44,6 @@ class Square(Rectangle):
             print()
 
     def to_dictionary(self):
-        """Returns a dict representation
-        """
+        """Returns a dict representation"""
 
         return {'id': self.id, 'x': self.x, 'size': self.width, 'y': self.y}
