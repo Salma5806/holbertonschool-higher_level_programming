@@ -91,18 +91,14 @@ class Rectangle(Base):
            print(" " * self.x + "#" * self.width)
 
     def __str__(self):
+        """Returns formatted information display
         """
-        [Rectangle] (<id>) <x>/<y> - <width>/<height>
-        """
-        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
-            self.id, self.x, self.y, self.width, self.height)
 
-     def update(self, *args, **kwargs):
-         """
-         adding the public method def update(self, *args):
-         that assigns an argument to each attribute
-         """
-         def update(self, *args, **kwargs):
+        return "[{}] ({}) {}/{} - {}/{}".format(self.__class__.__name__,
+                                                self.id, self.__x, self.__y,
+                                                self.__width, self.__height)
+
+    def update(self, *args, **kwargs):
         """Updates rectangle values
         """
 
