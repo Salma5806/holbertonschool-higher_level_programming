@@ -42,3 +42,13 @@ class Base:
                     d.append(obj.to_dictionary())
             f.write(cls.to_json_string(d))
 
+    @classmethod
+    def create(cls, **dictionary):
+        """returns an instance with all attributes already set"""
+        if cls.__name__ == 'Rectangle':
+            a = cls(1, 1)
+        if cls.__name__ == 'Square':
+            a = cls(1)
+        a.update(**dictionary)
+        return a
+
