@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Module list state
+ a script that lists all cities
+ from the database hbtn_0e_4_usa
 """
 import sys
 import MySQLdb
@@ -16,7 +17,8 @@ def main():
                         charset="utf8"
                             )
     cur = conn.cursor()
-    query = "SELECT id,name FROM states ORDER by id ASC"
+    query = """SELECT  cities.id, cities.name, states.name
+                FROM cities INNER JOIN states ON cities.state_id=states.id"""
     cur.execute(query)
     row = cur.fetchall()
     for r in row:

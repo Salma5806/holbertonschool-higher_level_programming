@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """
-Module list state
+Write a script that takes in an argument and
+displays all values in the states table of hbtn_0e_0_usa
+where name matches the argument.
 """
 import sys
 import MySQLdb
@@ -16,11 +18,14 @@ def main():
                         charset="utf8"
                             )
     cur = conn.cursor()
-    query = "SELECT id,name FROM states ORDER by id ASC"
+    search = sys.argv[4]
+    query = """SELECT * FROM states where name = '{:s}'
+            ORDER by id ASC""".format(search)
     cur.execute(query)
     row = cur.fetchall()
     for r in row:
-        print(r)
+        if r[1] == search:
+            print(r)
     cur.close()
     conn.close()
 
